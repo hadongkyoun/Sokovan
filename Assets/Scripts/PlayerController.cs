@@ -6,18 +6,31 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
     private Rigidbody rb;
+    private float xInput;
+    private float zInput;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(0, 100, 0);
     }
 
-    // Update is called once per frame
+
+
     void Update()
     {
-        // 수평 방향 -1 ~ +1 값
-        // Horizontal => 수평 방향에 대응되는 키가 맵핑. (<-, ->, A, D)
-        float inputX = Input.GetAxis("Horizontal");
-        
+        CheckInput();
+
+        Movement();
+    }
+
+    void CheckInput()
+    {
+        xInput = Input.GetAxis("Horizontal");
+        zInput = Input.GetAxis("Vertical");
+    }
+    
+    void Movement()
+    {
+        rb.velocity = new Vector3(xInput * speed, rb.velocity.y, zInput * speed);
     }
 }
