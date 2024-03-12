@@ -15,25 +15,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.W))
-        {
-            rb.AddForce(0, 0, speed);
-        }
-
-        if(Input.GetKey(KeyCode.S)) 
-        { 
-            rb.AddForce(0, 0, -speed);
-        }
-
-        if(Input.GetKey(KeyCode.A))
-        {
-            rb.AddForce(-speed, 0, 0);
-        }
-
-        if(Input.GetKey (KeyCode.D))
-        {
-            rb.AddForce(speed, 0, 0);
-        }
+        // 수평 방향 -1 ~ +1 값
+        // Horizontal => 수평 방향에 대응되는 키가 맵핑. (<-, ->, A, D)
+        float inputX = Input.GetAxis("Horizontal");
         
     }
 }
