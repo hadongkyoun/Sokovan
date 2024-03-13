@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 
     public bool isGameOver;
 
+    float timer = 0;
+
     void Start()
     {
         isGameOver = false;
@@ -14,6 +16,9 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (isGameOver == true)
+            return;
+        
         int count = 0;
 
         for(int i=0; i<3; i++)
@@ -22,12 +27,10 @@ public class GameManager : MonoBehaviour
             {
                 count++;
             }
-            
         }
         
-        if(count >= 3)
+        if(count > 2)
         {
-            Debug.Log("°ÔÀÓ ½Â¸®");
             isGameOver = true;
         }
     }
