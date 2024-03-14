@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameManager gameManager;
+
     [SerializeField] private float speed = 3f;
     private Rigidbody rb;
     private float xInput;
@@ -18,6 +20,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (gameManager.isGameOver == true)
+            return;
+
         CheckInput();
 
         Movement();
